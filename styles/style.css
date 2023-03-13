@@ -18,3 +18,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+.TibleWeekInput {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.TibleWeekInput div {
+  display: inline-flex;
+}
+.TibleWeekInput .days {
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.buttonstend {
+  width: 100vw;
+}

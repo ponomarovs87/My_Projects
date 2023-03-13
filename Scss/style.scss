@@ -16,15 +16,43 @@
 .WeekIllHol {
     display: flex;
     width: 100vw;
+
     div {
         display: inline-flex;
         flex-direction: column;
         align-items: center;
     }
-    
+
     ;
-    
+
 }
 
 ;
 
+.TibleWeekInput {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    div {
+        display: inline-flex;
+    }
+
+    ;
+
+    .days {
+        justify-content: space-between;
+        width: 100vw;
+    }
+
+    ;
+
+}
+
+;
+
+.buttonstend {
+    width: 100vw;
+}
+
+;
