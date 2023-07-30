@@ -23,7 +23,7 @@ export const MonthTitle: React.FC<MonthTitleProps> = ({ onMonthChange }) => {
 	};
 
 	const currentYear = new Date().getFullYear();
-	const years = Array.from({ length: 41 }, (_, index) => currentYear - 20 + index);
+	const years = Array.from({ length: 21 }, (_, index) => currentYear - 10 + index);
 
 	return (
 		<div>
