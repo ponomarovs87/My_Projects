@@ -1,0 +1,17 @@
+.dayCube {
+	background-color: antiquewhite;
+	width: fit-content;
+	height: fit-content;
+	display: inline-flex;
+	border: solid 1px;
+    flex-direction: column;
+}
+.daysContainer {
+	background-color: blanchedalmond;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.dayCube__div__p {
+	margin: 0;
+}
