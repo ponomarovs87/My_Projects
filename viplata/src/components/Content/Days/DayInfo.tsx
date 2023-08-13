@@ -20,7 +20,7 @@ export const DayInfo: React.FC<{ newDay: DayObj }> = ({ newDay }) => {
 				</>
 			);
 		}
-		return <div>В этот день не было ночной смены</div>;
+		return <></>;
 	};
 
 	const stuffDay = () => {
