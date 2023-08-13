@@ -7,6 +7,8 @@ import { roundStartTimeTo30Minutes, roundEndTimeTo30Minutes } from "../../logic/
 import { FormData } from "../../logic/interface/interfaceFormData";
 import { saveToBase } from "../../logic/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBase } from "../../logic/LocaleStorage/loadFromBase";
+import showHHmm from "../../logic/timeHelpers/showHHmm";
+import { DayInfo } from "./DayInfo";
 
 interface DayProps {
 	date: Date;
@@ -62,7 +64,7 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 					<input type="time" defaultValue="00:00" {...register("endOfWork")} />
 
 					<span>перерыв</span>
-					<input type="time" defaultValue="00:00" {...register("lunchtime")} />
+					<input type="time" defaultValue="00:30" {...register("lunchtime")} />
 				</div>
 				<label>
 					<input type="checkbox" defaultChecked={dayOffValue} {...register("dayOff")} />
@@ -81,33 +83,22 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 		);
 	};
 
-	const stuffDay = () => {
-		if (newDay?.dayOff === false && newDay.holiday === false && newDay.sickDay === false) {
-			return <div>обычный рабочий день</div>;
-		} else {
-			return (
-				<div>
-					Это {newDay?.dayOff === true ? "выходной" : ""} {newDay?.holiday === true ? "праздник" : ""} {newDay?.sickDay === true ? "больничный день" : ""}
-				</div>
-			);
-		}
-	};
-
 	const finishDay = () => {
 		if (showForm === false && newDay) {
 			return (
 				<>
 					<div>
-						<span>c</span>
-						<span>{new Date(newDay.startOfWork).toLocaleTimeString()}</span>
+						<span> c </span>
+						<span>{showHHmm(newDay.startOfWork)}</span>
 
-						<span>до</span>
-						<span>{new Date(newDay.endOfWork).toLocaleTimeString()}</span>
+						<span> до </span>
+						<span>{showHHmm(newDay.endOfWork)}</span>
 					</div>
-					<>{stuffDay()}</>
-					<div>
-						вы отработали {newDay.workHours} часов c вычетом перерыва {newDay.lunchtime} час(а)
-					</div>
+
+					<div>вы отработали {newDay.workHours} часов</div>
+					<>
+						<DayInfo newDay={newDay} />
+					</>
 					<button onClick={() => setShowForm(true)}>Изменить</button>
 				</>
 			);
