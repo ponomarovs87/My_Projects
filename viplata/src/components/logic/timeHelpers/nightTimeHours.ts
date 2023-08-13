@@ -7,9 +7,9 @@ function convertTimestampToDecimalTime(timestamp: number): number {
 	return decimalTime;
 }
 
-export function hasNightShift(timestampstartHours: number, timestampendHours: number): boolean {
-	const startHours = convertTimestampToDecimalTime(timestampstartHours);
-	const endHours = convertTimestampToDecimalTime(timestampendHours);
+export function hasNightShift(timestampStartHours: number, timestampEndHours: number): boolean {
+	const startHours = convertTimestampToDecimalTime(timestampStartHours);
+	const endHours = convertTimestampToDecimalTime(timestampEndHours);
 	if (startHours === endHours) {
 		return false;
 	}
@@ -19,10 +19,10 @@ export function hasNightShift(timestampstartHours: number, timestampendHours: nu
 
 	return false;
 }
-export function countNightHours(timestampstartHours: number, timestampendHours: number): number {
-	let startHours = convertTimestampToDecimalTime(timestampstartHours);
-	let endHours = convertTimestampToDecimalTime(timestampendHours);
-	if (hasNightShift(timestampstartHours, timestampendHours)) {
+export function countNightHours(timestampStartHours: number, timestampEndHours: number): number {
+	let startHours = convertTimestampToDecimalTime(timestampStartHours);
+	let endHours = convertTimestampToDecimalTime(timestampEndHours);
+	if (hasNightShift(timestampStartHours, timestampEndHours)) {
 		let answer = 0;
 		if (startHours >= 22 && endHours <= 6) {
 			endHours += 24;
