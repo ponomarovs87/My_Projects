@@ -3,30 +3,27 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { interfaceMathInputsObj, MathInputsObj } from "../../logic/abstractionObjects/mathInputsObj";
 import { saveToBaseMathInputs } from "../../logic/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBaseMathInputs } from "../../logic/LocaleStorage/loadFromBase";
+import { Results } from "../Results";
 
 interface DaysProps {
 	selectedMonth: Date;
 }
 
 export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset
-	} = useForm<interfaceMathInputsObj>();
+	const { register, handleSubmit, reset } = useForm<interfaceMathInputsObj>();
 
+	const [showForm, setShowForm] = useState(true);
 	const [MathInfo, setMathInfo] = useState<interfaceMathInputsObj | null>(null);
+
 	const regExPattern = "d+(.d{1,2})?";
 	const step = "0.01";
 
-	const onsubmit: SubmitHandler<interfaceMathInputsObj> = async (data) => {
-		const newMathInputsObj = new MathInputsObj(data.monthlySalary, data.monthlyPrumer, data.weekendBonus, data.additionalAllowanceForPreshour);
-		console.log(data);
-		console.log(selectedMonth);
-		console.log(newMathInputsObj);
-		await saveToBaseMathInputs(newMathInputsObj, selectedMonth);
+	const onsubmit: SubmitHandler<interfaceMathInputsObj> = (data) => {
+		const newMathInputsObj = new MathInputsObj(data.monthlySalary, data.monthlyPrumer, data.weekendBonus, data.additionalAllowanceForPreshour, data.dailyRate);
+
+		saveToBaseMathInputs(newMathInputsObj, selectedMonth);
 		setMathInfo(newMathInputsObj);
+		setShowForm(false);
 	};
 
 	useEffect(() => {
@@ -34,8 +31,14 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 		if (loadedMathInfo) {
 			setMathInfo(loadedMathInfo);
 			reset(loadedMathInfo);
+			setShowForm(false);
+
+			saveToBaseMathInputs(loadedMathInfo, selectedMonth);
+		} else {
+			setMathInfo(null);
+			setShowForm(true);
 		}
-	}, [selectedMonth, reset]);
+	}, [selectedMonth, showForm, reset]);
 
 	const formInfo = () => {
 		return (
@@ -49,9 +52,8 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 					<option value="300kc">300 крон в субботу</option>
 					<option value="10%">10% дополнительная надбавка</option>
 				</select>
-				<select id="additionalAllowanceForPreshour" {...register("additionalAllowanceForPreshour")}>
-					<option value="25%">25% дополнительная надбавка за пресчас</option>
-				</select>
+				<span>Норма рабочих часов в день</span>
+				<input type="number" step="0.25" defaultValue="8" {...register("dailyRate")} />
 				<button type="submit">ok</button>
 			</form>
 		);
@@ -64,12 +66,11 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 					<div>
 						<span> Зарплата в месяц </span>
 						<span>{MathInfo.monthlySalary}</span>
-
 						<span> Примерная зарплата в час </span>
 						<span>{MathInfo.monthlyPrumer}</span>
 					</div>
-
 					<button onClick={() => setMathInfo(null)}>Изменить</button>
+					<Results />
 				</>
 			);
 		} else {

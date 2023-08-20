@@ -9,6 +9,8 @@ import { saveToBase } from "../../logic/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBase } from "../../logic/LocaleStorage/loadFromBase";
 import showHHmm from "../../logic/timeHelpers/showHHmm";
 import { DayInfo } from "./DayInfo";
+import { loadFromBaseMathInputs } from "../../logic/LocaleStorage/loadFromBase";
+import { interfaceMathInputsObj } from "../../logic/abstractionObjects/mathInputsObj";
 
 interface DayProps {
 	date: Date;
@@ -25,6 +27,8 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 
 	const [showForm, setShowForm] = useState(true);
 	const [newDay, setNewDay] = useState<DayObj | null>(null);
+	const [MathInput, setMathInput] = useState<interfaceMathInputsObj | null>(null);
+
 
 	const onsubmit: SubmitHandler<FormData> = (data) => {
 		const { startOfWork, endOfWork, dayOff, holiday, sickDay, lunchtime } = data;
@@ -44,10 +48,20 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 	};
 
 	const dayOffValue = date.getDay() === 0 || date.getDay() === 6;
+	let defaultLunchtime = "00:30";
+	let defaultStartOfWork = "06:00";
+	let defaultEndOfWork = "14:30";
+	if (dayOffValue) {
+		defaultLunchtime = "00:00";
+		defaultStartOfWork = "00:00";
+		defaultEndOfWork = "00:00";
+	}
 
 	useEffect(() => {
 		const loadedDay = loadFromBase(date);
+		const MathInputs = loadFromBaseMathInputs(date)
 		if (loadedDay) {
+			setMathInput(MathInputs)
 			setNewDay(loadedDay);
 			setShowForm(false);
 		}
@@ -58,13 +72,13 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 			<form onSubmit={handleSubmit(onsubmit)}>
 				<div>
 					<span>c</span>
-					<input type="time" defaultValue="00:00" {...register("startOfWork")} />
+					<input type="time" defaultValue={defaultStartOfWork} {...register("startOfWork")} />
 
 					<span>до</span>
-					<input type="time" defaultValue="00:00" {...register("endOfWork")} />
+					<input type="time" defaultValue={defaultEndOfWork} {...register("endOfWork")} />
 
 					<span>перерыв</span>
-					<input type="time" defaultValue="00:30" {...register("lunchtime")} />
+					<input type="time" defaultValue={defaultLunchtime} {...register("lunchtime")} />
 				</div>
 				<label>
 					<input type="checkbox" defaultChecked={dayOffValue} {...register("dayOff")} />
@@ -97,7 +111,7 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 
 					<div>вы отработали {newDay.workHours} часов</div>
 					<>
-						<DayInfo newDay={newDay} />
+						<DayInfo newDay={newDay} mathInput={MathInput} />
 					</>
 					<button onClick={() => setShowForm(true)}>Изменить</button>
 				</>

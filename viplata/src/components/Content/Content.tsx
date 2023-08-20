@@ -12,8 +12,8 @@ export function Content() {
 
 	return (
 		<>
-			<MathInputs selectedMonth={selectedMonth}/>
 			<MonthTitle onMonthChange={handleMonthChange} />
+			<MathInputs selectedMonth={selectedMonth} />
 			<Days selectedMonth={selectedMonth} />
 		</>
 	);

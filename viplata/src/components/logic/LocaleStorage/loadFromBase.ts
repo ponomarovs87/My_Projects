@@ -2,6 +2,7 @@ import { load } from "./load";
 import { interfaceDayObj } from "../abstractionObjects/dayObj";
 import { interfaceMathInputsObj } from "../abstractionObjects/mathInputsObj";
 
+
 export function loadFromBase(date: Date): interfaceDayObj | null {
 	const WorkDaysBase = load();
 	const year = date.getFullYear();
@@ -31,5 +32,3 @@ export function loadFromBaseMathInputs(date: Date, count: number = 0): interface
 
 	return loadFromBaseMathInputs(newDate, count + 1);
 }
-
-

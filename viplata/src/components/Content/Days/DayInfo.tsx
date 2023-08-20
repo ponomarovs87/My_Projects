@@ -3,8 +3,9 @@ import { DayObj } from "../../logic/abstractionObjects/dayObj";
 import dailyHoursRate from "../../logic/timeHelpers/dailyHoursRate";
 import extrahoursCalculator from "../../logic/timeHelpers/extrahoursCalculator";
 import { hasNightShift, countNightHours } from "../../logic/timeHelpers/nightTimeHours";
+import { interfaceMathInputsObj } from "../../logic/abstractionObjects/mathInputsObj";
 
-export const DayInfo: React.FC<{ newDay: DayObj }> = ({ newDay }) => {
+export const DayInfo: React.FC<{ newDay: DayObj; mathInput: interfaceMathInputsObj | null }> = ({ newDay, mathInput }) => {
 	const [showDetails, setShowDetails] = useState(false);
 
 	const toggleDetails = () => {
@@ -35,7 +36,9 @@ export const DayInfo: React.FC<{ newDay: DayObj }> = ({ newDay }) => {
 		}
 	};
 
-	const dayHoursRate = dailyHoursRate(newDay.id);
+	const rate = mathInput?.dailyRate ? mathInput.dailyRate : 0;
+	
+	const dayHoursRate = dailyHoursRate(newDay.id, rate);
 	const dayExtrahours = extrahoursCalculator(dayHoursRate, newDay.workHours);
 	const detals = () => {
 		if (showDetails) {

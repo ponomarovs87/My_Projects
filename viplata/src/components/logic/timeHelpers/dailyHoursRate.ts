@@ -1,4 +1,4 @@
-export default function dailyHoursRate(date: number | Date) {
+export default function dailyHoursRate(date: number | Date, dailyRate: number) {
 	if (typeof date === "number") {
 		date = new Date(date);
 	}
@@ -6,5 +6,5 @@ export default function dailyHoursRate(date: number | Date) {
 	const dayOfWeek = date.getDay();
 	const dayOffBoolean = dayOfWeek === 0 || dayOfWeek === 6;
 
-	return dayOffBoolean ? 0 : 8;
+	return dayOffBoolean ? 0 : dailyRate;
 }
