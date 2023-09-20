@@ -69,8 +69,8 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 
 	const formInfo = () => {
 		return (
-			<form onSubmit={handleSubmit(onsubmit)}>
-				<div>
+			<form className={styles.formInputDay} onSubmit={handleSubmit(onsubmit)}>
+				<div className={styles.timeInput} >
 					<span>c</span>
 					<input type="time" defaultValue={defaultStartOfWork} {...register("startOfWork")} />
 
@@ -80,15 +80,15 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 					<span>перерыв</span>
 					<input type="time" defaultValue={defaultLunchtime} {...register("lunchtime")} />
 				</div>
-				<label>
+				<label className={styles.checkboxes}>
 					<input type="checkbox" defaultChecked={dayOffValue} {...register("dayOff")} />
 					<span>Выходной</span>
 				</label>
-				<label>
+				<label className={styles.checkboxes}>
 					<input type="checkbox" {...register("holiday")} />
 					<span>Праздник</span>
 				</label>
-				<label>
+				<label className={styles.checkboxes}>
 					<input type="checkbox" {...register("sickDay")} />
 					<span>Больничный</span>
 				</label>

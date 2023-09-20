@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
+import styles from "./monthTitle.module.css";
 
 interface MonthTitleProps {
 	onMonthChange: (date: Date) => void;
@@ -26,7 +27,7 @@ export const MonthTitle: React.FC<MonthTitleProps> = ({ onMonthChange }) => {
 	const years = Array.from({ length: 21 }, (_, index) => currentYear - 10 + index);
 
 	return (
-		<div>
+		<div className={styles.checkboxes}>
 			<form>
 				<select value={selectedMonth} onChange={handleMonthSelectChange}>
 					{Array.from({ length: 12 }, (_, index) => {

@@ -1,17 +1,28 @@
 .dayCube {
 	background-color: antiquewhite;
-	width: fit-content;
-	height: fit-content;
-	display: inline-flex;
+	display: grid;
 	border: solid 1px;
-    flex-direction: column;
-}
-.daysContainer {
-	background-color: blanchedalmond;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
+	border-radius: 0.2rem;
+	justify-items: center;
+	align-items: center;
+	align-content: center;
 }
 .dayCube__div__p {
 	margin: 0;
+}
+.formInputDay {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.timeInput {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+	justify-items: center;
+}
+.checkboxes {
+	grid-template-columns: 1fr 4fr;
+	display: grid;
+	align-items: center;
+	justify-items: center;
 }

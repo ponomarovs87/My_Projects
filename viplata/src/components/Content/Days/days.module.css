@@ -1,13 +1,6 @@
-.dayCube {
-	background-color: antiquewhite;
-    width: 200px;
-    height: 200px;
-    display: inline-flex;
-    border: solid 1px;
-}
 .daysContainer {
-	background-color: blanchedalmond;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+	/* background-color: blanchedalmond; */
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 5px;
 }
