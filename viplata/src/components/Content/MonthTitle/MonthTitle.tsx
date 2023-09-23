@@ -27,7 +27,7 @@ export const MonthTitle: React.FC<MonthTitleProps> = ({ onMonthChange }) => {
 	const years = Array.from({ length: 21 }, (_, index) => currentYear - 10 + index);
 
 	return (
-		<div className={styles.checkboxes}>
+		<div className={styles.dateSelection}>
 			<form>
 				<select value={selectedMonth} onChange={handleMonthSelectChange}>
 					{Array.from({ length: 12 }, (_, index) => {

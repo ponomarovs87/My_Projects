@@ -1,0 +1,8 @@
+.mathInfo {
+	width: calc(85% - 141px);
+	display: inline-grid;
+	min-height: 61px;
+	align-items: center;
+	justify-items: start;
+	align-content: space-around;
+}

@@ -2,26 +2,27 @@ import React, { useState, useEffect } from "react";
 
 export const Results: React.FC<{}> = () => {
 	const [showResults, setShowResults] = useState(false);
+	const [showFullResults, setShowFullResults] = useState(false);
 
 	useEffect(() => {
 		setShowResults(false);
 	}, []);
 
-	const calculateResults = () => {
-		setShowResults(true);
+	const toggleResults = () => {
+		setShowResults(!showResults);
 	};
 
-	const NOcalculateResults = () => {
-		setShowResults(false);
+	const toggleFullResults = () => {
+		setShowFullResults(!showFullResults);
 	};
 
 	return (
 		<div>
-			{!showResults && <button onClick={calculateResults}>Посчитать ЗП за месяц</button>}
+			<button onClick={toggleResults}>{showResults ? "Скрыть результаты" : "Посчитать ЗП за месяц "}</button>
 			{showResults && (
 				<>
-					<button onClick={NOcalculateResults}>Скрыть результаты</button>
 					<div>результат расчета</div>
+					<button onClick={toggleFullResults}>{showFullResults ? "Скрыть подробный отчет" : "Показать подробный отчет"}</button>
 				</>
 			)}
 		</div>

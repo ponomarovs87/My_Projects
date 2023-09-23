@@ -4,6 +4,7 @@ import { interfaceMathInputsObj, MathInputsObj } from "../../logic/abstractionOb
 import { saveToBaseMathInputs } from "../../logic/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBaseMathInputs } from "../../logic/LocaleStorage/loadFromBase";
 import { Results } from "../Results";
+import styles from "./mathInpus.module.css";
 
 interface DaysProps {
 	selectedMonth: Date;
@@ -63,13 +64,13 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 		if (MathInfo) {
 			return (
 				<>
-					<div>
+					<div className={styles.mathInfo}>
 						<span> Зарплата в месяц </span>
 						<span>{MathInfo.monthlySalary}</span>
 						<span> Примерная зарплата в час </span>
 						<span>{MathInfo.monthlyPrumer}</span>
+						<button onClick={() => setMathInfo(null)}>Изменить</button>
 					</div>
-					<button onClick={() => setMathInfo(null)}>Изменить</button>
 					<Results />
 				</>
 			);
