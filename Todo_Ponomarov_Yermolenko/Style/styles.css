@@ -1,0 +1,65 @@
+/* Стили для общего контейнера приложения */
+.todo-app {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+}
+
+/* Стили для заголовка */
+h1 {
+	text-align: center;
+}
+
+/* Стили для списка задач */
+.task-list {
+	list-style: none;
+	padding: 0;
+}
+
+.task-list li {
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+}
+
+/* Стили для поля ввода новой задачи */
+.add-task {
+	margin-top: 20px;
+}
+
+.add-task input[type="text"] {
+	width: 50%;
+	padding: 5px;
+	font-size: 16px;
+}
+
+.add-task button {
+	width: 20%;
+	height:100%;
+	align-items: center;
+	padding: 5px 10px;
+	font-size: 1rem;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task button:hover {
+	background-color: #45a049;
+}
+
+.error {
+	border: 1px solid red;
+}
+
+#error-message {
+	color: red;
+	margin-top: 5px;
+}

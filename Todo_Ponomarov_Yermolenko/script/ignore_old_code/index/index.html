@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Todo List</title>
+		<style>
+			/* Стили для общего контейнера приложения */
+			.todo-app {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				font-family: Arial, sans-serif;
+			}
+
+			/* Стили для заголовка */
+			h1 {
+				text-align: center;
+			}
+
+			/* Стили для списка задач */
+			.task-list {
+				list-style: none;
+				padding: 0;
+			}
+
+			.task-list li {
+				margin-bottom: 10px;
+				padding: 10px;
+				background-color: #f2f2f2;
+				border-radius: 5px;
+			}
+
+			/* Стили для поля ввода новой задачи */
+			.add-task {
+				margin-top: 20px;
+			}
+
+			.add-task input[type="text"] {
+				width: 70%;
+				padding: 5px;
+				font-size: 16px;
+			}
+
+			.add-task button {
+				padding: 5px 10px;
+				font-size: 16px;
+				background-color: #4caf50;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			.add-task button:hover {
+				background-color: #45a049;
+			}
+
+			.error {
+				border: 1px solid red;
+			}
+
+			#error-message {
+				color: red;
+				margin-top: 5px;
+			}
+
+			.completed {
+				text-decoration: line-through;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="todo-app" id="todoApp">
+			<h1>Todo List</h1>
+			<p id="emptyText">Пусто</p>
+			<ul class="task-list" id="taskList">
+				<!-- Здесь будут отображаться задачи -->
+			</ul>
+
+			<div class="add-task" id="addTask">
+				<input type="text" id="new-task-input" placeholder="Введите новую задачу" />
+				<button id="add-task-button">Добавить</button>
+				<button id="clear-input-button">Очистить</button>
+				<span id="error-message"></span>
+			</div>
+		</div>
+
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
