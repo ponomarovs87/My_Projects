@@ -1,0 +1,150 @@
+* {
+	word-break: break-word;
+}
+.buttons {
+	text-decoration: none;
+	background-image: linear-gradient(90deg, #fd7f34, #bd155b);
+	display: inline-block;
+	padding: 0 10px;
+	border: 1px solid;
+	position: relative;
+	z-index: 0;
+	border-radius: 5px;
+	box-sizing: border-box;
+	outline: none;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+	width: 15%;
+}
+.buttons:before {
+	content: "";
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	width: calc(100% + 4px);
+	background: linear-gradient(90deg, #fd7f34, #bd155b);
+	z-index: -2;
+	transition: 0.4s;
+	border-radius: 5px;
+}
+.buttons:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background: linear-gradient(90deg, #fff, #fff);
+	z-index: -1;
+	transition: 0.4s;
+	border-radius: 4px;
+}
+.buttons:hover {
+	color: #fff;
+	transition: 0.3s;
+}
+.buttons:hover:after {
+	background: linear-gradient(90deg, #fd7f34, #bd155b);
+}
+.buttons:active:after {
+	background: linear-gradient(90deg, #d96d2d, #760f3a);
+}
+.buttons:focus-visible {
+	box-shadow: 0 0 0 3px #fd7f34;
+}
+.buttons:disabled {
+	pointer-events: none;
+}
+.buttons:disabled:before {
+	filter: grayscale(100%);
+}
+.DivHome {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+}
+.labelCB {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	width: 70%;
+	justify-content: space-around;
+}
+.spansFin {
+	text-decoration: line-through;
+}
+.NameTasks__h2 {
+	color: greenyellow;
+	display: flex;
+	justify-content: center;
+}
+.inputCB {
+	display: none;
+}
+
+.error__textContent {
+	position: absolute;
+	top: 7px;
+	color: red;
+	font-size: larger;
+	background-color: aqua;
+	width: 100vw;
+	z-index: 2;
+	justify-content: center;
+	display: flex;
+}
+
+.namingFinishTask {
+	display: flex;
+	justify-content: space-around;
+	color: blanchedalmond;
+}
+.labelCompTask {
+	width: 85%;
+}
+.spans {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 33%;
+	height: 100%;
+	text-align: center;
+	word-break: break-word;
+}
+.btnName {
+	width: 15%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+.taskInfo {
+	width: 70%;
+	display: inline-flex;
+	justify-content: space-around;
+}
+.taskInfoCompl {
+	width: 85%;
+}
+.spansNamings {
+	width: 33%;
+	text-align: center;
+	justify-content: center;
+	display: inline-flex;
+	align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+	.buttons {
+		padding: 0;
+		font-size: 0.65rem;
+	}
+	.input__textContent {
+		width: 70%;
+		height: 100%;
+	}
+	.input__datetimeLocal {
+		width: 30%;
+		height: 100%;
+	}
+}

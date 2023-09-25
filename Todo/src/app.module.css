@@ -1,0 +1,15 @@
+.App {
+		display: flex;
+		flex-direction: column;
+		background-color: cadetblue;
+		width: 80vw;
+		min-height: 90vh;
+		border-radius: 15px;
+		margin: 5vh 0;
+}
+
+@media only screen and (max-width: 600px)  {
+	.App {
+		width: 95vw;
+	}
+}
