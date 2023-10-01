@@ -5,7 +5,7 @@
 }
 .galacic {
 	height: 100dvh;
-	width: 100dvh;
+	width: 100dvw;
 	/* max-height: 100svh;
 	max-width: 100svw; */
 	display: flex;
