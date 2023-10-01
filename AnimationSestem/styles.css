@@ -12,6 +12,7 @@
 	align-items: center;
 	justify-content: center;
 	background-color: slategray;
+	overflow: hidden;
 }
 .planet {
 	width: 25px;
