@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+    overflow: hidden;
+}
+.galacic {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: slategray;
+    
+}
+.planet {
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+}
+.Sestem {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+}
+.sun {
+	background-image: url("./img/sun.png");
+	animation: rotate 10s linear infinite;
+}
+.mercurySestem {
+	offset-path: circle(5% at 50% 50%);
+	animation: move 5s linear infinite;
+}
+.mercury {
+	background-image: url("./img/mercury.png");
+	animation: rotate 50s linear infinite;
+}
+.venusSestem {
+	offset-path: circle(10% at 50% 50%);
+	animation: move 7s linear infinite;
+}
+.venus {
+	background-image: url("./img/venus.png");
+	animation: rotate 45s linear infinite;
+}
+.earthSestem {
+	offset-path: circle(15% at 50% 50%);
+	animation: move 10s linear infinite;
+}
+.earth {
+	background-image: url("./img/earth.png");
+	animation: rotate 24s linear infinite;
+}
+.marsSestem {
+	offset-path: circle(20% at 50% 50%);
+	animation: move 12s linear infinite;
+}
+.mars {
+	background-image: url("./img/mars.png");
+	animation: rotate 28s linear infinite;
+}
+.jupiterSestem {
+	offset-path: circle(25% at 50% 50%);
+	animation: move 15s linear infinite;
+}
+.jupiter {
+	background-image: url("./img/jupiter.png");
+	animation: rotate 35s linear infinite;
+}
+.saturnSestem {
+	offset-path: circle(30% at 50% 50%);
+	animation: move 14s linear infinite;
+}
+.saturn {
+	background-image: url("./img/saturn.png");
+	animation: rotate 30s linear infinite;
+}
+.uranusSestem {
+	offset-path: circle(35% at 50% 50%);
+	animation: move 17s linear infinite;
+}
+.uranus {
+	background-image: url("./img/uranus.png");
+	animation: rotate 39s linear infinite;
+}
+.neptuneSestem {
+	offset-path: circle(40% at 50% 50%);
+	animation: move 20s linear infinite;
+}
+.neptune {
+	background-image: url("./img/neptune.png");
+	animation: rotate 48s linear infinite;
+}
+.plutoSestem {
+	offset-path: circle(45% at 50% 50%);
+	animation: move 30s linear infinite;
+}
+.pluto {
+	background-image: url("./img/pluto.png");
+	animation: rotate 120s linear infinite;
+}
+
+@keyframes move {
+	100% {
+		offset-distance: 100%;
+	}
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
