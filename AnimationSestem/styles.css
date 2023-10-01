@@ -1,16 +1,17 @@
 * {
 	margin: 0;
 	padding: 0;
-    overflow: hidden;
+	overflow: hidden;
 }
 .galacic {
-	height: 100dvh;
-	width: 100dvw;
+	height: 100svh;
+	width: 100svh;
+	max-height: 100svh;
+	max-width: 100svw;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: slategray;
-    
 }
 .planet {
 	width: 25px;
