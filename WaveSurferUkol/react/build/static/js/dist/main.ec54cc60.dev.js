@@ -7779,10 +7779,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       e.exports = n(813);
     },
     772: function _(e, t, n) {
-      e.exports = n.p + "./03_Projects/WaveSurferUkol/react/build/static/media/audio.99431b66ce3dd3187aa6.wav";
+      e.exports = n.p + "./My_Projects/WaveSurferUkol/react/build/static/media/audio.99431b66ce3dd3187aa6.wav";
     },
     441: function _(e, t, n) {
-      e.exports = n.p + "./03_Projects/WaveSurferUkol/react/build/static/media/demo.6fadb4d7840d4444e3d8.wav";
+      e.exports = n.p + "./My_Projects/WaveSurferUkol/react/build/static/media/demo.6fadb4d7840d4444e3d8.wav";
     }
   },
       t = {};
