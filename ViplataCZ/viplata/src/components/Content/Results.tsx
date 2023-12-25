@@ -3,7 +3,6 @@ import Functional from "./Functional";
 
 export const Results: React.FC<{}> = () => {
 	const [showResults, setShowResults] = useState(false);
-	const [showFullResults, setShowFullResults] = useState(false);
 
 	useEffect(() => {
 		setShowResults(false);
@@ -13,9 +12,7 @@ export const Results: React.FC<{}> = () => {
 		setShowResults(!showResults);
 	};
 
-	const toggleFullResults = () => {
-		setShowFullResults(!showFullResults);
-	};
+
 
 	return (
 		<div>
@@ -24,7 +21,7 @@ export const Results: React.FC<{}> = () => {
 				<>
 					<div>результат расчета</div>
 					<Functional/>
-					<button onClick={toggleFullResults}>{showFullResults ? "Скрыть подробный отчет" : "Показать подробный отчет"}</button>
+					
 				</>
 			)}
 		</div>
