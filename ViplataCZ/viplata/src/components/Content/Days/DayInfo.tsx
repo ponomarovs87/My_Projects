@@ -39,7 +39,7 @@ export const DayInfo: React.FC<{ newDay: DayObj; mathInput: interfaceMathInputsO
 	const rate = mathInput?.dailyRate ? mathInput.dailyRate : 0;
 
 	const dayHoursRate = dailyHoursRate(newDay.id, rate);
-	const dayExtrahours = getOverhoursInDay(newDay.id, rate, newDay.workHours);
+	const dayExtrahours = getOverhoursInDay(rate, newDay.workHours);
 	const detals = () => {
 		if (showDetails) {
 			return (
