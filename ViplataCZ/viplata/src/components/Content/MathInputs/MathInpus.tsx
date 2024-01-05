@@ -44,18 +44,18 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 	const formInfo = () => {
 		return (
 			<form onSubmit={handleSubmit(onsubmit)}>
-				<span>Зарплата в месяц</span>
-				<input type="number" step={step} pattern={regExPattern} {...register("monthlySalary")} />
-				<span>Примерная зарплата в час</span>
-				<input type="number" step={step} pattern={regExPattern} {...register("monthlyPrumer")} />
-				<span>Дополнительно в выходные</span>
+				<span>Зарплата в месяц : </span>
+				<input type="number" step={step} pattern={regExPattern} {...register("monthlySalary")} /><br/>
+				<span>Примерная зарплата в час : </span>
+				<input type="number" step={step} pattern={regExPattern} {...register("monthlyPrumer")} /><br/>
+				<span>Дополнительно в выходные : </span>
 				<select id="weekendBonus" {...register("weekendBonus")}>
-					<option value="300kc">300 крон в субботу</option>
-					<option value="10%">10% дополнительная надбавка</option>
-				</select>
-				<span>Норма рабочих часов в день</span>
-				<input type="number" step="0.25" defaultValue="8" {...register("dailyRate")} />
-				<button type="submit">ok</button>
+					<option value="300kc">300 крон в субботу </option>
+					<option value="10%">10% дополнительная надбавка </option>
+				</select><br/>
+				<span>Норма рабочих часов в день : </span>
+				<input type="number" step="0.25" defaultValue="8" {...register("dailyRate")} /><br/>
+				<button type="submit"> ok </button>
 			</form>
 		);
 	};
