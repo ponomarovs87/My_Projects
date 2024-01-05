@@ -1,25 +1,23 @@
 {
-	
 	"compilerOptions": {
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noFallthroughCasesInSwitch": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
-    "paths": {
-      "@src/*": ["./src/*"],
-      "@helper/*":["./src/helper/*"],
-    },
+	  "baseUrl": "./src/", // для абсолютного пути 
+	  "target": "es5",
+	  "lib": ["dom", "dom.iterable", "esnext"],
+	  "allowJs": true, // разрешает компиляцию файлов JavaScript
+	  "skipLibCheck": true, // пропускать проверку деклараций типов для node_modules
+	  "esModuleInterop": true, // упрощает импорт CommonJS модулей
+	  "allowSyntheticDefaultImports": true, // разрешает использование синтетических default импортов
+	  "strict": true, // включает все строгие проверки типов
+	  "forceConsistentCasingInFileNames": true, // проверка согласованности регистра символов в именах файлов
+	  "noFallthroughCasesInSwitch": true, // предупреждение о отсутствии break в конструкциях switch
+	  "module": "esnext", // указывает, какой стандарт модулей использовать
+	  "moduleResolution": "node", // указывает, как разрешать модули
+	  "resolveJsonModule": true, // позволяет импортировать JSON файлы
+	  "isolatedModules": true, // компиляция каждого файла как отдельного модуля
+	  "noEmit": true, // запрещает компиляцию в JavaScript файлов
+	  "jsx": "react-jsx", // тип синтаксиса JSX
+	  "preserveSymlinks": true, // сохраняет символические ссылки при компиляции
 	},
-	"include": ["src"]
-}
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"] // файлы для компиляции TypeScript
+  }
+  
