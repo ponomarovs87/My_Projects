@@ -4,12 +4,12 @@ import styles from "./day.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { DayObj } from "helper/abstractionObjects/dayObj";
 import { roundStartTimeTo30Minutes, roundEndTimeTo30Minutes } from "helper/DataAndTimeHelpers";
-import { FormData } from "logic/interface/interfaceFormData";
-import { saveToBase } from "logic/LocaleStorage/addEdditToLocaleStorage";
-import { loadFromBase } from "logic/LocaleStorage/loadFromBase";
+import { FormData } from "interface/interfaceFormData";
+import { saveToBase } from "helper/LocaleStorage/addEdditToLocaleStorage";
+import { loadFromBase } from "helper/LocaleStorage/loadFromBase";
 import { showHHmm } from "helper/DataAndTimeHelpers";
 import { DayInfo } from "./DayInfo";
-import { loadFromBaseMathInputs } from "logic/LocaleStorage/loadFromBase";
+import { loadFromBaseMathInputs } from "helper/LocaleStorage/loadFromBase";
 import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 
 interface DayProps {

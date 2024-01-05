@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { DayObj } from "helper/abstractionObjects/dayObj";
-import { dailyHoursRate } from "helper/DataAndTimeHelpers";
-import extrahoursCalculator from "logic/timeHelpers/extrahoursCalculator";
+import { dailyHoursRate, extrahoursCalculator } from "helper/DataAndTimeHelpers";
 import { hasNightShift, countNightHours } from "helper/DataAndTimeHelpers";
 import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 

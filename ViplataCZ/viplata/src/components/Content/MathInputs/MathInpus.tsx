@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { interfaceMathInputsObj, MathInputsObj } from "helper/abstractionObjects/mathInputsObj";
-import { saveToBaseMathInputs } from "logic/LocaleStorage/addEdditToLocaleStorage";
-import { loadFromBaseMathInputs } from "logic/LocaleStorage/loadFromBase";
+import { saveToBaseMathInputs } from "helper/LocaleStorage/addEdditToLocaleStorage";
+import { loadFromBaseMathInputs } from "helper/LocaleStorage/loadFromBase";
 import { Results } from "../Results";
 import styles from "./mathInpus.module.css";
 

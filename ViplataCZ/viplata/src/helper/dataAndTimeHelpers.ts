@@ -143,3 +143,27 @@ export function showHHmm(date: number): string {
 	const answer = format(new Date(date), "HH:mm");
 	return answer;
 }
+
+// Подсчет пресчаcов
+// (норма часов(8.5),отработано (10))=> ответ (1.5 часа)
+export function extrahoursCalculator(dailyHoursRate: number, workHours: number) {
+	return workHours - dailyHoursRate;
+}
+
+// Подсчтет отработанных часов
+// (окончание работы: таймстамп, начало работы : таймстамп, перерыв (например 0.5)) => кол-во отработанных часов (например: 10)
+export function workHoursCalc(endOfWork: number, startOfWork: number, lunchtime: number) {
+	let workHours = (endOfWork - startOfWork) / (60 * 60 * 1000);
+	if (workHours < 0) {
+		workHours = (24 + workHours);
+	}
+	if (workHours > 6) {
+		return workHours = workHours - lunchtime;
+	}
+	if (0.5 < workHours && workHours <= 6) {
+		return workHours;
+	} else {
+		workHours = 0;
+		return workHours;
+	}
+}

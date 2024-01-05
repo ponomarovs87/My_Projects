@@ -1,6 +1,6 @@
 import { load } from "./load";
-import { interfaceDayObj } from "../../helper/abstractionObjects/dayObj";
-import { interfaceMathInputsObj } from "../../helper/abstractionObjects/mathInputsObj";
+import { interfaceDayObj } from "../abstractionObjects/dayObj";
+import { interfaceMathInputsObj } from "../abstractionObjects/mathInputsObj";
 
 export function loadFromBase(date: Date): interfaceDayObj | null {
 	const WorkDaysBase = load();
