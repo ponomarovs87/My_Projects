@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { DayObj } from "../../logic/abstractionObjects/dayObj";
-import { dailyHoursRate } from "@helper/dataAndTimeHelpers";
-import extrahoursCalculator from "../../logic/timeHelpers/extrahoursCalculator";
-import { hasNightShift, countNightHours } from "../../../helper/dataAndTimeHelpers";
-import { interfaceMathInputsObj } from "../../logic/abstractionObjects/mathInputsObj";
+import { DayObj } from "helper/abstractionObjects/dayObj";
+import { dailyHoursRate } from "helper/DataAndTimeHelpers";
+import extrahoursCalculator from "logic/timeHelpers/extrahoursCalculator";
+import { hasNightShift, countNightHours } from "helper/DataAndTimeHelpers";
+import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 
 export const DayInfo: React.FC<{ newDay: DayObj; mathInput: interfaceMathInputsObj | null }> = ({ newDay, mathInput }) => {
 	const [showDetails, setShowDetails] = useState(false);

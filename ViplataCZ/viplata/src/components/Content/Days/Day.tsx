@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import styles from "./day.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { DayObj } from "../../logic/abstractionObjects/dayObj";
-import { roundStartTimeTo30Minutes, roundEndTimeTo30Minutes } from "../../logic/timeHelpers/roundTime";
-import { FormData } from "../../logic/interface/interfaceFormData";
-import { saveToBase } from "../../logic/LocaleStorage/addEdditToLocaleStorage";
-import { loadFromBase } from "../../logic/LocaleStorage/loadFromBase";
-import showHHmm from "../../logic/timeHelpers/showHHmm";
+import { DayObj } from "helper/abstractionObjects/dayObj";
+import { roundStartTimeTo30Minutes, roundEndTimeTo30Minutes } from "helper/DataAndTimeHelpers";
+import { FormData } from "logic/interface/interfaceFormData";
+import { saveToBase } from "logic/LocaleStorage/addEdditToLocaleStorage";
+import { loadFromBase } from "logic/LocaleStorage/loadFromBase";
+import { showHHmm } from "helper/DataAndTimeHelpers";
 import { DayInfo } from "./DayInfo";
-import { loadFromBaseMathInputs } from "../../logic/LocaleStorage/loadFromBase";
-import { interfaceMathInputsObj } from "../../logic/abstractionObjects/mathInputsObj";
+import { loadFromBaseMathInputs } from "logic/LocaleStorage/loadFromBase";
+import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 
 interface DayProps {
 	date: Date;
@@ -28,7 +28,6 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 	const [showForm, setShowForm] = useState(true);
 	const [newDay, setNewDay] = useState<DayObj | null>(null);
 	const [MathInput, setMathInput] = useState<interfaceMathInputsObj | null>(null);
-
 
 	const onsubmit: SubmitHandler<FormData> = (data) => {
 		const { startOfWork, endOfWork, dayOff, holiday, sickDay, lunchtime } = data;
@@ -59,9 +58,9 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 
 	useEffect(() => {
 		const loadedDay = loadFromBase(date);
-		const MathInputs = loadFromBaseMathInputs(date)
+		const MathInputs = loadFromBaseMathInputs(date);
 		if (loadedDay) {
-			setMathInput(MathInputs)
+			setMathInput(MathInputs);
 			setNewDay(loadedDay);
 			setShowForm(false);
 		}
@@ -70,7 +69,7 @@ export const Day: React.FC<DayProps> = ({ date }) => {
 	const formInfo = () => {
 		return (
 			<form className={styles.formInputDay} onSubmit={handleSubmit(onsubmit)}>
-				<div className={styles.timeInput} >
+				<div className={styles.timeInput}>
 					<span>c</span>
 					<input type="time" defaultValue={defaultStartOfWork} {...register("startOfWork")} />
 

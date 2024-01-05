@@ -1,4 +1,4 @@
-import { getWorkingDaysInMonth, dayIsWorking } from "@helper/dataAndTimeHelpers";
+import { getWorkingDaysInMonth, dayIsWorking } from "./DataAndTimeHelpers";
 
 // - таймстамп + норма в день => обязательные часы в месяц
 export function getWorkingHoursInMonth(timestamp: number, dailyRate: number): number {
@@ -20,5 +20,3 @@ export function getOverhoursInDay(timestamp: number, dailyRate: number, workedHo
 	const answer = workedHours - rate;
 	return answer;
 }
-
-

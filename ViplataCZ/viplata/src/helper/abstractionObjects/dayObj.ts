@@ -1,4 +1,4 @@
-import { workHoursCalc } from "../timeHelpers/workHoursCalc";
+import { workHoursCalc } from "logic/timeHelpers/workHoursCalc";
 
 export interface interfaceDayObj {
 	startOfWork: number;
