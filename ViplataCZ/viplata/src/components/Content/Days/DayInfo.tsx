@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { DayObj } from "helper/abstractionObjects/dayObj";
-import { dailyHoursRate, extrahoursCalculator } from "helper/DataAndTimeHelpers";
+import { dailyHoursRate } from "helper/DataAndTimeHelpers";
 import { hasNightShift, countNightHours } from "helper/DataAndTimeHelpers";
 import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
+import { getOverhoursInDay } from "helper/MathSallryLogic";
 
 export const DayInfo: React.FC<{ newDay: DayObj; mathInput: interfaceMathInputsObj | null }> = ({ newDay, mathInput }) => {
 	const [showDetails, setShowDetails] = useState(false);
@@ -38,7 +39,7 @@ export const DayInfo: React.FC<{ newDay: DayObj; mathInput: interfaceMathInputsO
 	const rate = mathInput?.dailyRate ? mathInput.dailyRate : 0;
 
 	const dayHoursRate = dailyHoursRate(newDay.id, rate);
-	const dayExtrahours = extrahoursCalculator(dayHoursRate, newDay.workHours);
+	const dayExtrahours = getOverhoursInDay(newDay.id, rate, newDay.workHours);
 	const detals = () => {
 		if (showDetails) {
 			return (

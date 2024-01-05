@@ -146,9 +146,9 @@ export function showHHmm(date: number): string {
 
 // Подсчет пресчаcов
 // (норма часов(8.5),отработано (10))=> ответ (1.5 часа)
-export function extrahoursCalculator(dailyHoursRate: number, workHours: number) {
+/* export function extrahoursCalculator(dailyHoursRate: number, workHours: number) {
 	return workHours - dailyHoursRate;
-}
+} */
 
 // Подсчтет отработанных часов
 // (окончание работы: таймстамп, начало работы : таймстамп, перерыв (например 0.5)) => кол-во отработанных часов (например: 10)
