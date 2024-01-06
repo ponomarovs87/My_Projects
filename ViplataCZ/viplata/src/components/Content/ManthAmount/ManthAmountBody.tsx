@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { ManthAmountDetals } from "./Summary";
 
-export default function Functional() {
+export const ManthAmountBody: React.FC<{}> = () => {
 	const [showFullInfo, setShowFullInfo] = useState(false);
 
 	const toggleFullInfo = () => {
@@ -19,20 +20,9 @@ export default function Functional() {
 				<br />
 				<span>Четвертое Оритеровачная зп ЗА сутки</span>
 				<br />
-				{showFullInfo && (
-					<div>
-						<span>необходимое кол-во часов в день</span>
-						<br />
-						<span>Кол-во ночных часов</span>
-						<br />
-						<span>Добавка в субботу</span>
-						<br />
-						<span>Кол-во часов отработанных в праздник</span>
-						<br />
-					</div>
-				)}
+				{showFullInfo && <ManthAmountDetals />}
 			</div>
 			<button onClick={toggleFullInfo}>{showFullInfo ? "Скрыть подробный отчет" : "Показать подробный отчет"}</button>
 		</>
 	);
-}
+};

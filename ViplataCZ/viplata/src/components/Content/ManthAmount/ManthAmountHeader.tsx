@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Functional from "./Functional";
+import React, { useEffect, useState } from 'react'
+import { ManthAmountBody } from './ManthAmountBody';
 
-export const Results: React.FC<{}> = () => {
-	const [showResults, setShowResults] = useState(false);
+export const ManthAmountHeader: React.FC<{}> = () => {
+    const [showResults, setShowResults] = useState(false);
 
 	useEffect(() => {
 		setShowResults(false);
@@ -20,10 +20,10 @@ export const Results: React.FC<{}> = () => {
 			{showResults && (
 				<>
 					<div>результат расчета</div>
-					<Functional/>
+					<ManthAmountBody/>
 					
 				</>
 			)}
 		</div>
 	);
-};
+}

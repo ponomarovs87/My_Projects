@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { interfaceMathInputsObj, MathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 import { saveToBaseMathInputs } from "helper/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBaseMathInputs } from "helper/LocaleStorage/loadFromBase";
-import { Results } from "../Results";
 import styles from "./mathInpus.module.css";
 
 interface DaysProps {
@@ -71,7 +70,6 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 						<span>{MathInfo.monthlyPrumer}</span>
 						<button onClick={() => setMathInfo(null)}>Изменить</button>
 					</div>
-					<Results />
 				</>
 			);
 		} else {
