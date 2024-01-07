@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import styles from "./monthTitle.module.css";
+import { useContentContext } from "../ContentProvider";
 
-interface MonthTitleProps {
-	onMonthChange: (date: Date) => void;
-}
-
-export const MonthTitle: React.FC<MonthTitleProps> = ({ onMonthChange }) => {
+export const MonthTitle: React.FC = () => {
+	const { handleMonthChange } = useContentContext();
 	const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
 	const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
 
 	useEffect(() => {
 		const newDate = new Date(`${selectedYear}-${selectedMonth}-01`);
-		onMonthChange(newDate);
-	}, [onMonthChange, selectedMonth, selectedYear]);
+		handleMonthChange(newDate);
+	}, [handleMonthChange, selectedMonth, selectedYear]);
 
 	const handleMonthSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedMonth(Number(e.target.value));

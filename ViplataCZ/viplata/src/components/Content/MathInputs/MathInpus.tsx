@@ -4,16 +4,19 @@ import { interfaceMathInputsObj, MathInputsObj } from "helper/abstractionObjects
 import { saveToBaseMathInputs } from "helper/LocaleStorage/addEdditToLocaleStorage";
 import { loadFromBaseMathInputs } from "helper/LocaleStorage/loadFromBase";
 import styles from "./mathInpus.module.css";
+import { useContentContext } from "../ContentProvider";
 
 interface DaysProps {
 	selectedMonth: Date;
 }
 
-export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
+export const MathInputs: React.FC = () => {
+	
+	const { selectedMonth, MathInfo, setMathInfo } = useContentContext();
+
 	const { register, handleSubmit, reset } = useForm<interfaceMathInputsObj>();
 
 	const [showForm, setShowForm] = useState(true);
-	const [MathInfo, setMathInfo] = useState<interfaceMathInputsObj | null>(null);
 
 	const regExPattern = "d+(.d{1,2})?";
 	const step = "0.01";
@@ -44,16 +47,20 @@ export const MathInputs: React.FC<DaysProps> = ({ selectedMonth }) => {
 		return (
 			<form onSubmit={handleSubmit(onsubmit)}>
 				<span>Зарплата в месяц : </span>
-				<input type="number" step={step} pattern={regExPattern} {...register("monthlySalary")} /><br/>
+				<input type="number" step={step} pattern={regExPattern} {...register("monthlySalary")} />
+				<br />
 				<span>Примерная зарплата в час : </span>
-				<input type="number" step={step} pattern={regExPattern} {...register("monthlyPrumer")} /><br/>
+				<input type="number" step={step} pattern={regExPattern} {...register("monthlyPrumer")} />
+				<br />
 				<span>Дополнительно в выходные : </span>
 				<select id="weekendBonus" {...register("weekendBonus")}>
 					<option value="300kc">300 крон в субботу </option>
 					<option value="10%">10% дополнительная надбавка </option>
-				</select><br/>
+				</select>
+				<br />
 				<span>Норма рабочих часов в день : </span>
-				<input type="number" step="0.25" defaultValue="8" {...register("dailyRate")} /><br/>
+				<input type="number" step="0.25" defaultValue="8" {...register("dailyRate")} />
+				<br />
 				<button type="submit"> ok </button>
 			</form>
 		);

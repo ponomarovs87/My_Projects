@@ -1,4 +1,27 @@
 import { format } from "date-fns";
+import { interfaceMathInputsObj } from "./abstractionObjects/mathInputsObj";
+
+// Получить стандартное время работы(дата, )
+export function getDefaultTimeValues(date: number | Date, MathInput: interfaceMathInputsObj | null) {
+	const dayOffValue = isDayOff(date);
+	let defaultLunchtime = "00:00";
+	let defaultStartOfWork = "00:00";
+	let defaultEndOfWork = "00:00";
+
+	if (MathInput) {
+		defaultLunchtime = MathInput.defaultLunchtime;
+		defaultStartOfWork = MathInput.defaultStartOfWork;
+		defaultEndOfWork = MathInput.defaultEndOfWork;
+	}
+
+	if (dayOffValue) {
+		defaultLunchtime = "00:00";
+		defaultStartOfWork = "00:00";
+		defaultEndOfWork = "00:00";
+	}
+
+	return { defaultLunchtime, defaultStartOfWork, defaultEndOfWork };
+}
 
 // таймтамп => сколько рабочих дней в месяце
 export function getWorkingDaysInMonth(timestamp: number): number {
@@ -98,15 +121,19 @@ export function countNightHours(timestampStartHours: number, timestampEndHours: 
 	}
 	return 0;
 }
-
-// - дата(таймстамп или дата) + норма => если рабочий день вовращает норму если нет возвращает 0
-export function dailyHoursRate(date: number | Date, dailyRate: number): number {
+// - дата (является ли выходным) => boolean (true=выходной)
+export function isDayOff(date: number | Date): boolean {
 	if (typeof date === "number") {
 		date = new Date(date);
 	}
-
 	const dayOfWeek = date.getDay();
 	const dayOffBoolean = dayOfWeek === 0 || dayOfWeek === 6;
+	return dayOffBoolean;
+}
+
+// - дата(таймстамп или дата) + норма => если рабочий день вовращает норму если нет возвращает 0
+export function dailyHoursRate(date: number | Date, dailyRate: number): number {
+	const dayOffBoolean = isDayOff(date);
 
 	return dayOffBoolean ? 0 : dailyRate;
 }
@@ -118,7 +145,8 @@ export const roundStartTimeTo30Minutes = (date: Date): Date => {
 	const minutes = copiedDate.getMinutes();
 	if (minutes > 0 && minutes < 30) {
 		copiedDate.setMinutes(30);
-	} if (minutes > 30) {
+	}
+	if (minutes > 30) {
 		copiedDate.setMinutes(0);
 		copiedDate.setHours(copiedDate.getHours() + 1, 0, 0, 0);
 	}
@@ -132,7 +160,8 @@ export const roundEndTimeTo30Minutes = (date: Date): Date => {
 	const minutes = copiedDate.getMinutes();
 	if (minutes > 0 && minutes < 30) {
 		copiedDate.setMinutes(0);
-	} if (minutes > 30) {
+	}
+	if (minutes > 30) {
 		copiedDate.setMinutes(30);
 	}
 	return copiedDate;
@@ -149,10 +178,10 @@ export function showHHmm(date: number): string {
 export function workHoursCalc(endOfWork: number, startOfWork: number, lunchtime: number) {
 	let workHours = (endOfWork - startOfWork) / (60 * 60 * 1000);
 	if (workHours < 0) {
-		workHours = (24 + workHours);
+		workHours = 24 + workHours;
 	}
 	if (workHours > 6) {
-		return workHours = workHours - lunchtime;
+		return (workHours = workHours - lunchtime);
 	}
 	if (0.5 < workHours && workHours <= 6) {
 		return workHours;

@@ -1,8 +1,11 @@
+import { interfaceMathInputsObj } from "helper/abstractionObjects/mathInputsObj";
 import React, { createContext, useState, useCallback, useContext, ReactNode } from "react";
 
 interface ContentContextType {
 	selectedMonth: Date;
 	handleMonthChange: (date: Date) => void;
+	MathInfo: interfaceMathInputsObj | null;
+	setMathInfo: React.Dispatch<React.SetStateAction<interfaceMathInputsObj | null>>;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
@@ -13,6 +16,7 @@ interface ContentProviderProps {
 
 export const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
 	const [selectedMonth, setSelectedMonth] = useState(new Date());
+	const [MathInfo, setMathInfo] = useState<interfaceMathInputsObj | null>(null);
 
 	const handleMonthChange = useCallback((date: Date) => {
 		setSelectedMonth(date);
@@ -20,7 +24,9 @@ export const ContentProvider: React.FC<ContentProviderProps> = ({ children }) =>
 
 	const contextValue: ContentContextType = {
 		selectedMonth,
-		handleMonthChange
+		handleMonthChange,
+		MathInfo,
+		setMathInfo
 	};
 
 	return <ContentContext.Provider value={contextValue}>{children}</ContentContext.Provider>;

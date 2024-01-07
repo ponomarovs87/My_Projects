@@ -4,14 +4,20 @@ export interface interfaceMathInputsObj {
 	weekendBonus: string;
 	additionalAllowanceForPreshour: string;
 	dailyRate: number;
+	defaultLunchtime: string;
+	defaultStartOfWork: string;
+	defaultEndOfWork: string;
 }
 
-export class MathInputsObj {
+export class MathInputsObj implements interfaceMathInputsObj {
 	monthlySalary: number;
 	monthlyPrumer: number;
 	weekendBonus: string;
 	additionalAllowanceForPreshour: string;
 	dailyRate: number;
+	defaultLunchtime: string;
+	defaultStartOfWork: string;
+	defaultEndOfWork: string;
 
 	constructor(monthlySalary: number, monthlyPrumer: number, weekendBonus: string, additionalAllowanceForPreshour: string, dailyRate: number) {
 		this.monthlySalary = +monthlySalary;
@@ -19,5 +25,8 @@ export class MathInputsObj {
 		this.weekendBonus = weekendBonus;
 		this.additionalAllowanceForPreshour = additionalAllowanceForPreshour;
 		this.dailyRate = +dailyRate;
+		this.defaultLunchtime = "00:30";
+		this.defaultStartOfWork = "06:00";
+		this.defaultEndOfWork = "14:30";
 	}
 }
