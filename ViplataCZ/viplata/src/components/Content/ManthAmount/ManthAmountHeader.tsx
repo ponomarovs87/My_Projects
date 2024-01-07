@@ -22,6 +22,7 @@ export const ManthAmountHeader: React.FC<{}> = () => {
 					<div>результат расчета</div>
 					<ManthAmountBody/>
 					
+					
 				</>
 			)}
 		</div>

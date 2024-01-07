@@ -1,13 +1,14 @@
 import React from "react";
+import Provider from "components/Provider";
 import { Header } from "./components/Header/Header";
-import { Content } from "./components/Content/Content";
+import { ContentWithProvider } from "./components/Content/Content";
 
 function App() {
 	return (
-		<>
+		<Provider>
 			<Header />
-			<Content />
-		</>
+			<ContentWithProvider />
+		</Provider>
 	);
 }
 
