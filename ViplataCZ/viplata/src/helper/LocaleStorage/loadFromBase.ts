@@ -2,13 +2,13 @@ import { load } from "./load";
 import { interfaceDayObj } from "../abstractionObjects/dayObj";
 import { interfaceMathInputsObj } from "../abstractionObjects/mathInputsObj";
 
-export function loadFromBase(date: Date): interfaceDayObj | null {
+export function loadFromBase(date: Date): interfaceDayObj {
 	const WorkDaysBase = load();
 	const year = date.getFullYear();
 	const month = date.getMonth() + 1;
 	const day = date.getDate();
 
-	return WorkDaysBase[year]?.[month]?.[day] || null;
+	return WorkDaysBase[year]?.[month]?.[day];
 }
 
 export function loadFromBaseMathInputs(date: Date, count: number = 0): interfaceMathInputsObj | null {

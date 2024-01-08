@@ -1,4 +1,4 @@
-import { workHoursCalc } from "helper/DataAndTimeHelpers";
+import { workHoursCalc } from "helper/dataAndTimeHelpers";
 
 export interface interfaceDayObj {
 	startOfWork: number;

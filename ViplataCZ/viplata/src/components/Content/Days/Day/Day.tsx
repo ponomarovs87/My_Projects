@@ -4,10 +4,12 @@ import styles from "../day.module.css";
 import { format } from "date-fns";
 import { useDayContext } from "./DayProvider";
 import { DayFinishDay } from "./DayFinishDay";
+import { DayForm } from "./DayForm";
 
 export const Day: React.FC = () => {
 	const { date } = useDayContext();
 	const dayOfWeek = format(date, "EEEE");
+	const { showForm } = useDayContext();
 
 	return (
 		<>
@@ -17,8 +19,15 @@ export const Day: React.FC = () => {
 						{format(date, "dd")} {dayOfWeek}
 					</p>
 				</div>
-				<DayFinishDay />
-				<div></div>
+				{!showForm ? (
+					<>
+						<DayForm />
+					</>
+				) : (
+					<>
+						<DayFinishDay />
+					</>
+				)}
 			</div>
 		</>
 	);

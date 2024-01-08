@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../day.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { roundEndTimeTo30Minutes, roundStartTimeTo30Minutes } from "helper/DataAndTimeHelpers";
+import { roundEndTimeTo30Minutes, roundStartTimeTo30Minutes } from "helper/dataAndTimeHelpers";
 import { format } from "date-fns";
 import { DayObj } from "helper/abstractionObjects/dayObj";
 import { saveToBase } from "helper/LocaleStorage/addEdditToLocaleStorage";
@@ -14,7 +14,7 @@ export const DayForm: React.FC<{}> = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm<FormData>();
-	const { date, dayOffValue, setShowForm, setNewDay, defaultTimeValues } = useDayContext();
+	const { date, dayOffValue, setShowForm, setNewDay, defaultTimeValues, handleButtonClick } = useDayContext();
 
 	const onsubmit: SubmitHandler<FormData> = (data) => {
 		const { startOfWork, endOfWork, dayOff, holiday, sickDay, lunchtime } = data;
@@ -30,7 +30,7 @@ export const DayForm: React.FC<{}> = () => {
 
 		saveToBase(newDay, date);
 		setNewDay(newDay);
-		setShowForm(false);
+		handleButtonClick();
 		console.log(newDay);
 	};
 

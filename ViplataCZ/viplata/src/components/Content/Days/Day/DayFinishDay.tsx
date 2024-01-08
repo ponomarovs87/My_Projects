@@ -1,27 +1,24 @@
-import React from "react";
-import { DayForm } from "./DayForm";
+import React, { useEffect } from "react";
 import { useDayContext } from "./DayProvider";
+import { showHHmm } from "helper/dataAndTimeHelpers";
+import { classifyDay } from "helper/stringDataAndTimeHelpers";
 
-export const DayFinishDay: React.FC<{}> = () => {
-	const { showForm, setShowForm, loadedDay } = useDayContext();
+interface DayFinishDayProps {
+	// Добавьте необходимые свойства, если есть
+}
 
-	
-
-	const handleButtonClick = () => {
-		setShowForm(!showForm);
-	};
-
+export const DayFinishDay: React.FC<DayFinishDayProps> = () => {
+	const { handleButtonClick, loadedDay } = useDayContext();
 
 	return (
 		<>
-			{!showForm ? (
-				<DayForm />
-			) : (
-				<>
-					<div>Хуй</div>
-					<button onClick={handleButtonClick}>поменять</button>
-				</>
-			)}
+			<span>Начало работы : {showHHmm(loadedDay.startOfWork)}</span>
+			<span>Конец рабочего дня : {showHHmm(loadedDay.endOfWork)}</span>
+			<span>Начало Работы : {classifyDay(loadedDay)}</span>
+			<span>Начало Работы : {showHHmm(loadedDay.startOfWork)}</span>
+			<button onClick={handleButtonClick}>поменять</button>
 		</>
 	);
 };
+
+export default DayFinishDay;
