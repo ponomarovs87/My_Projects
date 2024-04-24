@@ -67,7 +67,7 @@ export const TaskProvider: React.FC = ({ children }: React.PropsWithChildren<{}>
 		setItem(tasks);
 	}, [tasks]);
 
-	return (console.log();
+	return (
 		<TaskContext.Provider
 			value={{
 				tasks,
